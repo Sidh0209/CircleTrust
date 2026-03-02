@@ -62,8 +62,8 @@ export default function Register() {
                 if (profileError) throw profileError;
             }
 
-            const webAppUrl = import.meta.env.VITE_WEB_APP_URL || 'http://localhost:3000';
-            window.location.href = `${webAppUrl.replace(/\/$/, '')}/profile`;
+            // Redirect to login page for confirmation instead of web-app directly
+            navigate('/login');
         } catch (err) {
             setError(err.message || 'Failed to create an account');
         } finally {
