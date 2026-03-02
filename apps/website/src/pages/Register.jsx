@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { User, Mail, Lock, MapPin, Building, Globe, Map, Loader2 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { supabase } from '../lib/supabase';
 import './Auth.css';
 
 export default function Register() {
@@ -47,7 +48,22 @@ export default function Register() {
             });
 
             if (error) throw error;
-            window.location.href = 'http://localhost:3000';
+
+            if (data?.user) {
+                const { error: profileError } = await supabase.from('profiles').insert({
+                    id: data.user.id,
+                    email: formData.email,
+                    full_name: formData.name,
+                    country: formData.country,
+                    state: formData.state,
+                    city: formData.city,
+                    pincode: formData.pincode
+                });
+                if (profileError) throw profileError;
+            }
+
+            const webAppUrl = import.meta.env.VITE_WEB_APP_URL || 'http://localhost:3000';
+            window.location.href = `${webAppUrl.replace(/\/$/, '')}/profile`;
         } catch (err) {
             setError(err.message || 'Failed to create an account');
         } finally {

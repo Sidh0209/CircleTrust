@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function CTA() {
     return (
         <section className="section cta-section" id="cta">
@@ -22,9 +24,9 @@ export default function CTA() {
                     </p>
 
                     <div className="cta-btns">
-                        <a href="/register" className="btn btn-primary" style={{ fontSize: '1rem', padding: '15px 32px' }}>
+                        <Link to="/register" className="btn btn-primary" style={{ fontSize: '1rem', padding: '15px 32px' }}>
                             🚀 Get Early Access
-                        </a>
+                        </Link>
                         <a href="#hero" className="btn btn-outline" style={{ fontSize: '1rem', padding: '15px 32px' }}>
                             Learn More
                         </a>

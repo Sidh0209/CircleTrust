@@ -1,32 +1,23 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Problem from './components/Problem'
-import HowItWorks from './components/HowItWorks'
-import Features from './components/Features'
-import TechStack from './components/TechStack'
-import Impact from './components/Impact'
-import FutureScope from './components/FutureScope'
-import Dashboard from './components/Dashboard'
-import CTA from './components/CTA'
-import Footer from './components/Footer'
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Dashboard from './pages/Dashboard'
+import { AuthProvider } from './contexts/AuthContext'
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <Problem />
-        <HowItWorks />
-        <Features />
-        <TechStack />
-        <Impact />
-        <FutureScope />
-        <Dashboard />
-        <CTA />
-      </main>
-      <Footer />
-    </>
+    <Router>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </AuthProvider>
+    </Router>
   )
 }
 

@@ -19,7 +19,8 @@ export default function Login() {
             setLoading(true);
             const { error } = await signIn({ email, password });
             if (error) throw error;
-            window.location.href = 'http://localhost:3000';
+            const webAppUrl = import.meta.env.VITE_WEB_APP_URL || 'http://localhost:3000';
+            window.location.href = webAppUrl;
         } catch (err) {
             setError(err.message || 'Failed to sign in');
         } finally {

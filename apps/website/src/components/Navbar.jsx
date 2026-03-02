@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false)
@@ -35,11 +36,10 @@ export default function Navbar() {
                         ))}
                     </ul>
 
-                    {/* CTA */}
                     <div className="nav-actions">
-                        <a href="/register" className="btn btn-primary" style={{ padding: '10px 20px', fontSize: '0.88rem' }}>
+                        <Link to="/register" className="btn btn-primary" style={{ padding: '10px 20px', fontSize: '0.88rem' }}>
                             Join the Circle →
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Hamburger */}
@@ -55,14 +55,13 @@ export default function Navbar() {
                 </div>
             </nav>
 
-            {/* Mobile Menu */}
             <div className={`mobile-nav${menuOpen ? ' open' : ''}`}>
                 {links.map(l => (
                     <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</a>
                 ))}
-                <a href="/register" onClick={() => setMenuOpen(false)} className="btn btn-primary" style={{ marginTop: 8 }}>
+                <Link to="/register" onClick={() => setMenuOpen(false)} className="btn btn-primary" style={{ marginTop: 8 }}>
                     Join the Circle →
-                </a>
+                </Link>
             </div>
         </>
     )

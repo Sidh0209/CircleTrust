@@ -12,15 +12,19 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "../co
 import { ZeroState } from "../components/ui/ZeroState";
 import { Button } from "../components/ui/Button";
 import { ProgressCircle } from "../components/ui/ProgressCircle";
+import { useAuth } from "../contexts/AuthContext";
 
 const Dashboard = () => {
     const [isTxHistoryLocked, setIsTxHistoryLocked] = useState(true);
+    const { profile } = useAuth();
 
     return (
         <div className="space-y-6">
             <header className="flex items-center justify-between mb-8">
                 <div>
-                    <h1 className="text-3xl font-bold text-white">Dashboard</h1>
+                    <h1 className="text-3xl font-bold text-white">
+                        {profile?.full_name ? `Welcome back, ${profile.full_name.split(' ')[0]}` : "Dashboard"}
+                    </h1>
                     <p className="text-gray-400">Welcome back to your control center.</p>
                 </div>
                 <div className="flex gap-2">
@@ -30,6 +34,7 @@ const Dashboard = () => {
                     </Button>
                 </div>
             </header>
+
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Left Column */}

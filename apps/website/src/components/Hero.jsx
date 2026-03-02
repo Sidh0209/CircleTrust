@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Hero() {
     return (
         <section className="hero section" id="hero">
@@ -26,7 +28,7 @@ export default function Hero() {
                     </p>
 
                     <div className="hero-cta">
-                        <a href="/register" className="btn btn-primary">Get Early Access →</a>
+                        <Link to="/register" className="btn btn-primary">Get Early Access →</Link>
                         <a href="#how" className="btn btn-outline">How It Works</a>
                     </div>
 
