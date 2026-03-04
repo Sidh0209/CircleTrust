@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Loader2 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { useEffect } from 'react';
 import './Auth.css';
 
 export default function Login() {
@@ -9,8 +10,15 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const { signIn } = useAuth();
+    const { signIn, user } = useAuth();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user) {
+            const webAppUrl = import.meta.env.VITE_WEB_APP_URL || 'http://localhost:3000';
+            window.location.href = webAppUrl;
+        }
+    }, [user]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
