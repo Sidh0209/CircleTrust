@@ -10,11 +10,11 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "../co
 import { ZeroState } from "../components/ui/ZeroState";
 import { Button } from "../components/ui/Button";
 import { ProgressCircle } from "../components/ui/ProgressCircle";
-import { useAuth } from "../contexts/AuthContext";
+
 
 const Dashboard = () => {
     const isTxHistoryLocked = true;
-    const { profile } = useAuth();
+    const profile = null;
 
     return (
         <div className="space-y-6">

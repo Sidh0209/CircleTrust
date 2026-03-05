@@ -14,13 +14,14 @@ import {
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "../components/ui/Card";
 import { Button } from "../components/ui/Button";
-import { useAuth } from "../contexts/AuthContext";
+
 
 const Profile = () => {
-    const { user, profile, signOut } = useAuth();
+    const user = null;
+    const profile = null;
 
-    const handleLogout = async () => {
-        await signOut();
+    const handleLogout = () => {
+        // Logout is handled by the parent app
     };
 
     const getInitials = (name) => {
